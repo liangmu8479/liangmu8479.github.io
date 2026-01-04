@@ -2,270 +2,642 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Liang Mu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mu Liang | Homepage</title>
 
   <style>
-    :root {
-      --text: #1a1a1a;
-      --muted: #555;
-      --light: #888;
-      --border: #e5e5e5;
-      --bg: #ffffff;
-      --link: #1a4dd8;
+    :root{
+      --bg:#f6f7f6;
+      --text:#1f2d2b;
+      --muted:#66706e;
+      --accent:#8fbfb4;
+      --accent2:#8aaec0;
+      --line:rgba(0,0,0,.06);
+      --maxw:1080px;
+      --navw:200px;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      line-height:1.65;
+      background:var(--bg);
     }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Helvetica, Arial, sans-serif;
-      line-height: 1.75;
+    a{ color:#2f6f72; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding:56px 20px 72px;
     }
 
-    a {
-      color: var(--link);
-      text-decoration: none;
+    /* ===== Header ===== */
+    header{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:24px;
+      padding-bottom:32px;
+      border-bottom:1px solid var(--line);
     }
 
-    a:hover {
-      text-decoration: underline;
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:999px;
+      overflow:hidden;
+      background:#e9eceb;
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 48px 24px 96px;
+    h1{ margin:0; font-size:22px; }
+
+    .subtitle{
+      margin:6px 0 0;
+      font-size:14px;
+      color:var(--muted);
     }
 
-    header {
-      margin-bottom: 56px;
+    .meta{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      font-size:14px;
+      color:var(--muted);
     }
 
-    h1 {
-      font-size: 36px;
-      font-weight: 600;
-      margin: 0 0 8px 0;
+    /* ===== Layout ===== */
+    .content{
+      display:grid;
+      grid-template-columns:var(--navw) 1fr;
+      gap:48px;
+      margin-top:40px;
     }
 
-    .subtitle {
-      font-size: 18px;
-      color: var(--muted);
-      margin-bottom: 16px;
+    /* ===== Sidebar ===== */
+    nav{
+      position:sticky;
+      top:32px;
+      align-self:start;
     }
 
-    .meta {
-      font-size: 15px;
-      color: var(--light);
+    .nav-title{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:12px;
     }
 
-    section {
-      margin-bottom: 72px;
+    nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      border-left:2px solid var(--line);
     }
 
-    h2 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
+    nav a{
+      display:block;
+      padding:8px 0 8px 16px;
+      font-size:14px;
+      color:var(--muted);
     }
 
-    p {
-      margin: 0 0 16px 0;
+    nav a:hover{ color:var(--text); }
+
+    /* ===== Sections ===== */
+    main section{
+      padding-bottom:44px;
+      border-bottom:1px solid var(--line);
+      scroll-margin-top:40px;
     }
 
-    /* Publications */
-
-    .pub {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      margin-bottom: 40px;
+    main section:last-child{
+      border-bottom:none;
     }
 
-    .pub img {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: #fafafa;
+    h2{
+      margin:0 0 20px;
+      font-size:16px;
+      position:relative;
+      padding-left:14px;
     }
 
-    .pub-title {
-      font-weight: 600;
-      font-size: 17px;
-      margin-bottom: 6px;
+    h2::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:linear-gradient(180deg,var(--accent),var(--accent2));
     }
 
-    .pub-authors {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 6px;
+    .paragraph{
+      font-size:14px;
+      color:var(--muted);
+      max-width:720px;
     }
 
-    .pub-venue {
-      font-size: 14px;
-      color: var(--light);
-      margin-bottom: 8px;
+    /* ===== Publications ===== */
+    .paper{
+      margin-top:26px;
+      padding-top:26px;
+      border-top:1px solid var(--line);
+    }
+    .paper:first-of-type{
+      border-top:none;
+      padding-top:0;
     }
 
-    .pub-links a {
-      font-size: 14px;
-      margin-right: 12px;
+    .paper-title{
+      font-size:15px;
+      font-weight:500;
     }
 
-    @media (max-width: 720px) {
-      .pub {
-        grid-template-columns: 1fr;
+    .paper-meta{
+      margin:4px 0 8px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .paper-desc{
+      font-size:14px;
+      color:var(--muted);
+      max-width:680px;
+    }
+
+    .paper-figure{
+      margin-top:12px;
+      max-width:520px;
+      background:#eef1f0;
+      border-radius:8px;
+      padding:8px;
+    }
+
+    .paper-figure img{
+      width:100%;
+      border-radius:6px;
+      display:block;
+    }
+
+    /* =====Activities ===== */
+    .timeline{
+      position:relative;
+      margin-left:12px;
+      padding-left:28px;
+      border-left:2px solid var(--line);
+    }
+
+    .timeline-item{
+      display:grid;
+      grid-template-columns:1fr 160px;
+      gap:24px;
+      padding-bottom:28px;
+      position:relative;
+    }
+
+    .timeline-item::before{
+      content:"";
+      position:absolute;
+      left:-37px;
+      top:6px;
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:linear-gradient(180deg,var(--accent),var(--accent2));
+    }
+
+    .timeline-text{
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .timeline-text strong{
+      color:var(--text);
+      font-weight:500;
+    }
+
+    .timeline-img-vertical{
+      width:100px;
+      height:160px;
+      background:#e9eceb;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .timeline-img-vertical img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .timeline-img-horizontal{
+      width:160px;
+      height:100px;
+      background:#e9eceb;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .timeline-img-horizontal img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    footer{
+      margin-top:56px;
+      padding-top:28px;
+      border-top:1px solid var(--line);
+      text-align:center;
+      font-size:12px;
+      color:#7a8583;
+    }
+
+    @media (max-width:900px){
+      .content{ grid-template-columns:1fr; }
+      nav{ position:relative; }
+      .timeline-item{
+        grid-template-columns:1fr;
+      }
+      .timeline-img-vertical{
+        width:100%;
+        height:160px;
+        margin-top:12px;
       }
     }
 
-    footer {
-      font-size: 14px;
-      color: var(--light);
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
+    @media (max-width:900px){
+      .content{ grid-template-columns:1fr; }
+      nav{ position:relative; }
+      .timeline-item{
+        grid-template-columns:1fr;
+      }
+      .timeline-img-horizontal{
+        width:100%;
+        height:160px;
+        margin-top:12px;
+      }
     }
 
+  .paper{
+    margin-top:32px;
+  }
 
-.hero {
-  position: relative;
-  padding: 80px 0 60px;
-  background-image: url("assets/images/bg-map.png");
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-size: 420px auto;
+  .paper-row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:24px;
+    align-items:flex-start;
+  }
+
+  .paper-teaser img{
+    width:180px;
+    height:auto;
+    border-radius:4px;
+    background:#f0f0f0;
+  }
+
+  .paper-title{
+    font-size:18px;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+
+  .paper-meta{
+    font-size:14px;
+    color:#666;
+    margin:2px 0;
+  }
+
+  .paper-links{
+    margin-top:8px;
+    font-size:14px;
+  }
+
+  .paper-links a{
+    color:#1a5cff;
+    text-decoration:none;
+  }
+
+  .paper-links a:hover{
+    text-decoration:underline;
+  }
+
+.project{
+  margin-top:32px;
+}
+
+.project-row{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:28px;
+  align-items:flex-start;
+}
+
+.project-media{
+  width:200px;
+}
+
+.project-gif{
+  width:100%;
+  border-radius:8px;
+  background:#eef1f0;
+  display:block;
+}
+
+.project-title{
+  font-size:17px;
+  font-weight:600;
+  margin:0 0 6px;
+}
+
+.project-desc{
+  font-size:14px;
+  color:#66706e;
+  max-width:720px;
+}
+
+  .project-links{
+    margin-top:8px;
+    font-size:14px;
+  }
+
+  .project-links a{
+    color:#1a5cff;
+    text-decoration:none;
+  }
+
+  .project-links a:hover{
+    text-decoration:underline;
+  }
+
+@media (max-width:700px){
+  .project-row{
+    grid-template-columns:1fr;
+  }
+  .project-media{
+    max-width:320px;
+  }
 }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="wrap">
 
-    <!-- Header -->
-<header class="hero">
-      <h1>Liang Mu</h1>
-      <div class="subtitle">
-        Transit Map Visualization · Geometric Optimization · Interactive Graphics
+    <!-- ===== Header ===== -->
+    <header>
+      <div class="avatar">
+        <img src="pic1.jpg" alt="Profile photo">
       </div>
-      <div class="meta">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 .5C5.73.5.5 5.73.5 12.02c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55
-             0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.54-3.88-1.54-.53-1.35-1.3-1.71-1.3-1.71
-             -1.06-.73.08-.72.08-.72 1.17.08 1.79 1.21 1.79 1.21
-             1.04 1.78 2.73 1.27 3.4.97.1-.76.41-1.27.75-1.56
-             -2.55-.29-5.23-1.28-5.23-5.7
-             0-1.26.45-2.29 1.19-3.1
-             -.12-.29-.52-1.46.11-3.05
-             0 0 .97-.31 3.18 1.18
-             .92-.26 1.9-.39 2.88-.39
-             .98 0 1.96.13 2.88.39
-             2.2-1.49 3.17-1.18 3.17-1.18
-             .64 1.59.24 2.76.12 3.05
-             .74.81 1.19 1.84 1.19 3.1
-             0 4.43-2.69 5.41-5.25 5.69
-             .42.36.8 1.08.8 2.18
-             0 1.57-.02 2.84-.02 3.23
-             0 .3.21.66.79.55
-             4.56-1.53 7.85-5.85 7.85-10.95
-             C23.5 5.73 18.27.5 12 .5z"/>
-  </svg>     
-        <a href="https://github.com/liangmu8479">liangmu8479</a>
-<div class="meta">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-       style="vertical-align: middle; margin-right: 6px;">
-    <path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="1.6"/>
-    <path d="M3 5l9 7 9-7" stroke="currentColor" stroke-width="1.6"/>
-  </svg>
-  <a href="mailto:yourname@example.com">yourname@example.com</a>
-</div>
+      <div>
+        <h1>Mu Liang</h1>
+        <p class="subtitle">Research Engineer</p>
+        <div class="meta">
+          <a href="https://liris.cnrs.fr/">Liris - CNRS</a>
+        </div>
+        <div class="meta">
+          <a href="https://www.ec-lyon.fr/">École Centrale de Lyon</a>
+        </div>
+        <div class="meta">
+          <span>Contact: mu[dot]liang[at]ec-lyon[dot]fr</span>
+        </div>
       </div>
     </header>
 
-    <!-- About -->
-    <section>
-      <h2>About</h2>
-      <p>
-        I work on transit map visualization and interactive systems for
-        schematic layout and analysis. My interests include topology-aware
-        data representations, geometric optimization, and evaluation metrics
-        for visual quality and readability.
-      </p>
-      <p>
-        This page presents selected research projects and publications.
-      </p>
-    </section>
+    <div class="content">
 
-    <!-- Publications -->
-    <section>
-      <h2>Publications</h2>
+      <!-- ===== Sidebar ===== -->
+      <nav>
+        <div class="nav-title">Contents</div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#activities">Activities</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
 
-      <div class="pub">
-        <img src="assets/images/paper1.png" alt="Paper 1 teaser">
-        <div>
-          <div class="pub-title">
-            Transit Map Generation with Topology-Aware Optimization
-          </div>
-          <div class="pub-authors">
-            Liang Mu, Coauthor Name
-          </div>
-          <div class="pub-venue">
-            Conference / Journal Name, Year
-          </div>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">Project page</a>
-            <a href="#">Code</a>
-          </div>
-        </div>
+      <!-- ===== Main ===== -->
+      <main>
+
+        <section id="about">
+          <h2>About</h2>
+          <p class="paragraph">
+            I am a Research Engineer at <a href="https://www.ec-lyon.fr/">École Centrale de Lyon</a>, currently working on the DECALIGNE project under the supervision of <a href="https://romain.vuillemot.net/">Romain Vuillemot</a>. 
+I received my bachelor's degree in Economics in 2019. I then obtained a Master's degree in Computer Science from <a href="https://vcc.tech/index">Visual Computing Research Center(VCC)</a>, where I was supervised by <a href="https://pengfeixu.com/">Pengfei Xu</a>. My research interests are in computer graphics, particularly geometry processing, and interactive systems for graphics design and visualization.
+          </p>
+        </section>
+
+<section id="publications">
+  <h2>Publications</h2>
+
+  <!-- ===== DynamicPacking ===== -->
+  <div class="paper">
+    <div class="paper-row">
+
+      <!-- teaser -->
+      <div class="paper-teaser">
+        <img src="dynamicpacking.gif" alt="Interactive Element Packing for Animation teaser">
       </div>
 
-      <div class="pub">
-        <img src="assets/images/paper2.png" alt="Paper 2 teaser">
-        <div>
-          <div class="pub-title">
-            Visual Analysis of Shared Segments in Metro Maps
-          </div>
-          <div class="pub-authors">
-            Liang Mu, Coauthor Name
-          </div>
-          <div class="pub-venue">
-            Conference / Journal Name, Year
-          </div>
-          <div class="pub-links">
-            <a href="#">PDF</a>
-            <a href="#">Project page</a>
-            <a href="#">Code</a>
-          </div>
+      <!-- Overview -->
+      <div class="paper-content">
+        <p class="paper-title">
+          Interactive Element Packing for Animation
+        </p>
+
+        <p class="paper-meta">
+          <strong>Mu Liang</strong>, <a href="https://pengfeixu.com/">Pengfei Xu</a>*, <a href="https://vcc.tech/~huihuang">Hui Huang</a>
+        </p>
+
+        <p class="paper-meta">
+           2025
+        </p>
+
+        <div class="paper-links">
+          <a href="#">PDF(coming soon)</a>
+          · <a href="https://drive.google.com/drive/folders/1V4oFAIZxt4d3-djnug0_maY3IZcCHDyJ?dmr=1&ec=wgc-drive-hero-goto">Video</a>
+          · <a href="https://github.com/liangmu8479/DynamicPacking">Code</a>
         </div>
+
+        <p class="paper-meta" style="margin-top:10px;">
+          We extend interactive element packing from static layouts to animation generation.
+          A brush-based system allows designers to directly control element motion within a
+          packing pattern, enabling efficient creation of personalized element packing animations.
+        </p>
       </div>
 
-    </section>
+    </div>
+  </div>
 
-    <!-- Projects -->
-    <section>
-      <h2>Projects</h2>
-      <p>
-        <strong>TransitMapSystem</strong> —
-        an interactive C++ system for transit map visualization and optimization.
-        <a href="https://github.com/liangmu8479/TransitMapSystem">GitHub</a>
-      </p>
-    </section>
+  <!-- ===== Paper 1 ===== -->
+  <div class="paper">
+    <div class="paper-row">
 
-    <!-- Footer -->
+      <!-- teaser -->
+      <div class="paper-teaser">
+        <img src="brushpacking.png" alt="Brush-based Interactive Element Packing teaser">
+      </div>
+
+      <!-- Ovewrview -->
+      <div class="paper-content">
+        <p class="paper-title">
+          Brush-based Interactive Element Packing
+        </p>
+
+        <p class="paper-meta">
+          <strong>Mu Liang</strong>, <a href="https://pengfeixu.com/">Pengfei Xu</a>*, <a href="https://vcc.tech/~huihuang">Hui Huang</a>
+        </p>
+
+        <p class="paper-meta">
+          Journal of Graphics 2024
+	 </p>
+
+        <div class="paper-links">
+          <a href="https://drive.google.com/file/d/1z8uZAZ7Ix705CJd3GBx6XmOS05vz6WXK/view?usp=drive_link">PDF</a>
+          · <a href="https://drive.google.com/file/d/1ucNdH1WMRV-EbEgZ_U-N2SPE7mjstXkr/view?usp=sharing">Video</a>
+          · <a href="https://github.com/liangmu8479/BrushPacking">Code</a>
+        </div>
+
+        <p class="paper-meta" style="margin-top:10px;">
+          Element packing is a visual art form widely used in logos, posters, and advertisements.
+          We propose a brush-based interactive element packing technique that enables designers to
+          perform boundary outlining and element packing simultaneously in real time using a
+          physics-based simulation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<section id="projects">
+  <h2>Projects</h2>
+
+  <!-- ===== Project 1 ===== -->
+  <div class="project">
+    <div class="project-row">
+
+      <!-- Left: GIF + tech icons -->
+      <div class="project-media">
+        <img src="arap.gif" alt="DeformationQt demo" class="project-gif">
+      </div>
+
+      <!-- Right: text -->
+      <div>
+        <p class="project-title">DeformationQt</p>
+
+        <p class="project-desc">
+          DeformationQt is an interactive visualization system for geometric deformation algorithms
+          implemented with a Qt-based graphical interface. The system allows users to explore and
+          compare deformation behaviors in real time through direct manipulation.
+        </p>
+
+        <div class="project-links">
+          <a href="https://github.com/liangmu8479/DeformationQt">Project page</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== Project 2 ===== -->
+  <div class="project">
+    <div class="project-row">
+
+      <!-- Left: GIF -->
+      <div class="project-media">
+        <img src="2DCoordinates.gif" alt="2D Barycentric Coordinates demo" class="project-gif">
+      </div>
+
+      <!-- Right: text -->
+      <div>
+        <p class="project-title">2D Barycentric Coordinates</p>
+
+        <p class="project-desc">
+          This project presents a comparative visualization of barycentric coordinate methods in
+          two dimensions, including Wachspress Coordinates, Mean Value Coordinates, Green
+          Coordinates, and Iterative Coordinates.
+        </p>
+        <div class="project-links">
+          <a href="https://github.com/liangmu8479/2DbarycentricCoordinates">Project page</a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+        <section id="activities">
+          <h2>Activities</h2>
+
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-text">
+                <strong>Nov 2025 · <a href="https://liris.cnrs.fr/">Liris - CNRS</a></strong><br>
+               Joined the DECALIGNE project.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-text">
+                <strong>Aug 2025 · Computer-Aided Design and Computer Graphics</strong><br>
+               Attended the main conference and participated in poster sessions and affiliated workshops.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-text">
+                <strong>Jun 2025 · Defense</strong><br>
+		Master Defense at <a href="https://vcc.tech/index">VCC</a>.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-text">
+                <strong>Aug 2024 · Computer-Aided Design and Computer Graphics</strong><br>
+                Attended the main conference and participated in poster sessions and affiliated workshops.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p class="paragraph">
+            Email: mu[dot]liang[at]ec-lyon[dot]fr<br>
+            GitHub: <a href="https://github.com/liangmu8479">https://github.com/liangmu8479</a> <br>
+          </p>
+        </section>
+
+      </main>
+    </div>
+
     <footer>
-      © <span id="year"></span> Liang Mu
+      © <span id="y"></span> Mu Liang
     </footer>
-
   </div>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    document.getElementById("y").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
